@@ -1,0 +1,21 @@
+.nav-container {
+  background-color: rgb(67, 132, 251);
+  flex-direction: row;
+  height: 10vh;
+  width: 100%;
+  color: white;
+  padding: 0px;
+  z-index: 10;
+  box-shadow: 0 8px 6px -6px rgb(153, 153, 153, 0.836);
+}
+
+.branding {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  font-size: 22px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  padding: 10px;
+  padding-left: 20px;
+}
