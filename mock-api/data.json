@@ -1,0 +1,17 @@
+{
+  "user": [
+    {
+      "userName": "danush",
+      "email": "Dnauh@gm",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "userName": "adsd",
+      "email": "sas@fdgfdf",
+      "password": "231313",
+      "id": 2
+    }
+  ],
+  "post": []
+}

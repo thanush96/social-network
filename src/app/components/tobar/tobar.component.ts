@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-tobar',
   templateUrl: './tobar.component.html',
-  styleUrls: ['./tobar.component.css']
+  styleUrls: ['./tobar.component.css'],
 })
 export class TobarComponent implements OnInit {
+  constructor(
+    public userService: UserService,
+    public router: Router,
+    public snackBar: MatSnackBar
+  ) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  logout() {
+    this.userService.user = undefined;
+    this.snackBar.open('logout successful', 'ok');
+    this.router.navigate(['/login']);
   }
-
 }

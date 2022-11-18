@@ -2,25 +2,53 @@
   <div class="form-container">
     <div class="title">Create Account</div>
 
-    <form>
+    <form [formGroup]="createForm">
       <mat-form-field appearance="outline">
-        <mat-label>Enter your email</mat-label>
-        <input matInput />
+        <mat-label>Enter your user name</mat-label>
+        <input matInput formControlName="userName" />
+        <mat-error *ngIf="createForm.controls.email.invalid">
+          {{
+            createForm.controls.email.hasError("required")
+              ? "User name is required"
+              : "Username cannot be longer than 10 characters"
+          }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Enter your user name</mat-label>
-        <input matInput />
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error *ngIf="createForm.controls.email.invalid">
+          {{
+            createForm.controls.email.hasError("required")
+              ? "Email is required"
+              : "Please enter the valid email"
+          }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Enter your user password</mat-label>
-        <input matInput />
+        <input matInput formControlName="password" />
+        <mat-error *ngIf="createForm.controls.password.invalid">
+          {{
+            createForm.controls.password.hasError("required")
+              ? "Password is required"
+              : "Password should be at least 6 characters"
+          }}
+        </mat-error>
       </mat-form-field>
     </form>
 
     <div class="buttons-container">
-      <button mat-raised-button class="login-button">Create Account</button>
+      <button
+        mat-raised-button
+        class="login-button"
+        [disabled]="createForm.invalid"
+        (click)="create()"
+      >
+        Create Account
+      </button>
       <p>OR</p>
       <button mat-raised-button routerLink="/login">Login</button>
     </div>
