@@ -20,6 +20,7 @@ export class TobarComponent implements OnInit {
   logout() {
     this.userService.user = undefined;
     this.snackBar.open('logout successful', 'ok');
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }

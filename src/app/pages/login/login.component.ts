@@ -17,7 +17,13 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let user = localStorage.getItem('user');
+    if (user != null) {
+      this.userService.user = JSON.parse(user);
+      this.router.navigate(['/posts']);
+    }
+  }
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -28,11 +34,12 @@ export class LoginComponent implements OnInit {
     this.userService
       .getUser(this.loginForm.value.email)
       .then((res: any) => {
-        // console.log(res);
         if (res.length == 0) {
           this.snackBar.open('Account does not exist', 'ok');
         } else {
           if (res[0].password === this.loginForm.value.password) {
+            this.userService.user = res[0];
+            localStorage.setItem('user', JSON.stringify(res[0]));
             this.snackBar.open('Login successful', 'ok');
             this.router.navigate(['/posts']);
           } else {

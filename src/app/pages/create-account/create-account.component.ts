@@ -29,6 +29,7 @@ export class CreateAccountComponent implements OnInit {
       .then((res) => {
         // console.log(res);
         this.userService.user = res;
+        localStorage.setItem('user', JSON.stringify(res));
         this.router.navigate(['/posts']);
       })
       .catch((err) => {

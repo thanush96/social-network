@@ -16,6 +16,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PostsComponent } from './pages/posts/posts.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from 'src/environments/environment';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,10 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSnackBarModule,
     MatIconModule,
     MatMenuModule,
+    MatCardModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    MaterialFileInputModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
